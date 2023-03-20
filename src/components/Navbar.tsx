@@ -3,7 +3,6 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import SignInButton from '@/components/SignInButton';
 import SignOutButton from '@/components/SignOutButton';
-// import { ThemeToggle } from '@/components/ThemeToggle'
 import { buttonVariants } from '@/ui/Button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -21,7 +20,7 @@ const Navbar = async () => {
           <ThemeToggle />
         </div>
 
-        <div className='hidden md:flex gap-4'>
+        <div className='hidden md:flex gap-3'>
           <ThemeToggle />
           <Link
             href='/documentation'
