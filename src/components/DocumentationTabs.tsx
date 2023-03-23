@@ -1,10 +1,10 @@
 'use client';
 
-import { FC } from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/ui/Tabs';
-import Code from '@/components/ui/Code';
 import { nodejs, python } from '@/helpers/documentation-code';
+import { FC } from 'react';
 import SimpleBar from 'simplebar-react';
+import Code from './ui/Code';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/Tabs';
 
 const DocumentationTabs: FC = () => {
   return (
@@ -12,14 +12,17 @@ const DocumentationTabs: FC = () => {
       <TabsList>
         <TabsTrigger value='nodejs'>NodeJS</TabsTrigger>
         <TabsTrigger value='python'>Python</TabsTrigger>
-        <TabsContent value='nodejs'>
-          <Code animated language='javascript' code={nodejs} show />
-        </TabsContent>
-
-        <TabsContent value='python'>
-          <Code animated language='python' code={python} show />
-        </TabsContent>
       </TabsList>
+      <TabsContent value='nodejs'>
+        <SimpleBar forceVisible='y'>
+          <Code animated code={nodejs} language='javascript' show />
+        </SimpleBar>
+      </TabsContent>
+      <TabsContent value='python'>
+        <SimpleBar forceVisible='y'>
+          <Code animated code={python} language='python' show />
+        </SimpleBar>
+      </TabsContent>
     </Tabs>
   );
 };
