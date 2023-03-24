@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import * as React from 'react';
 import { useTheme } from 'next-themes';
@@ -25,23 +25,6 @@ export function ThemeToggle() {
     },
   };
 
-  const dropdownMenuVariants = {
-    hidden: {
-      opacity: 0,
-      y: -10,
-      transition: {
-        duration: 0.1,
-      },
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -51,50 +34,41 @@ export function ThemeToggle() {
           <span className='sr-only'>Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <AnimatePresence>
-        <DropdownMenuContent
-          align='end'
-          forceMount
-          variants={dropdownMenuVariants}
+      <DropdownMenuContent align='end' forceMount>
+        <motion.div
+          variants={menuItemVariants}
           initial='hidden'
           animate='visible'
-          exit='hidden'
+          transition={{ duration: 0.2, delay: 0.1 }}
         >
-          <motion.div
-            variants={menuItemVariants}
-            initial='hidden'
-            animate='visible'
-            transition={{ duration: 0.2, delay: 0.1 }}
-          >
-            <DropdownMenuItem onClick={() => setTheme('light')}>
-              <Icons.Sun className='mr-2 h-4 w-4' />
-              <span>Light</span>
-            </DropdownMenuItem>
-          </motion.div>
-          <motion.div
-            variants={menuItemVariants}
-            initial='hidden'
-            animate='visible'
-            transition={{ duration: 0.2, delay: 0.2 }}
-          >
-            <DropdownMenuItem onClick={() => setTheme('dark')}>
-              <Icons.Moon className='mr-2 h-4 w-4' />
-              <span>Dark</span>
-            </DropdownMenuItem>
-          </motion.div>
-          <motion.div
-            variants={menuItemVariants}
-            initial='hidden'
-            animate='visible'
-            transition={{ duration: 0.2, delay: 0.3 }}
-          >
-            <DropdownMenuItem onClick={() => setTheme('system')}>
-              <Icons.Laptop className='mr-2 h-4 w-4' />
-              <span>System</span>
-            </DropdownMenuItem>
-          </motion.div>
-        </DropdownMenuContent>
-      </AnimatePresence>
+          <DropdownMenuItem onClick={() => setTheme('light')}>
+            <Icons.Sun className='mr-2 h-4 w-4' />
+            <span>Light</span>
+          </DropdownMenuItem>
+        </motion.div>
+        <motion.div
+          variants={menuItemVariants}
+          initial='hidden'
+          animate='visible'
+          transition={{ duration: 0.2, delay: 0.2 }}
+        >
+          <DropdownMenuItem onClick={() => setTheme('dark')}>
+            <Icons.Moon className='mr-2 h-4 w-4' />
+            <span>Dark</span>
+          </DropdownMenuItem>
+        </motion.div>
+        <motion.div
+          variants={menuItemVariants}
+          initial='hidden'
+          animate='visible'
+          transition={{ duration: 0.2, delay: 0.3 }}
+        >
+          <DropdownMenuItem onClick={() => setTheme('system')}>
+            <Icons.Laptop className='mr-2 h-4 w-4' />
+            <span>System</span>
+          </DropdownMenuItem>
+        </motion.div>
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 }

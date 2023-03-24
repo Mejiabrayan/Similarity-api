@@ -1,4 +1,4 @@
-// import { authOptions } from '@/lib/auth'
+import { motion, AnimatePresence } from 'framer-motion';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import SignInButton from '@/components/SignInButton';
