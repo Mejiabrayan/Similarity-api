@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { Info, LayoutDashboard, Loader2, User } from 'lucide-react';
-import { signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Button } from './ui/Button';
+import { Info, LayoutDashboard, Loader2, User } from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { useState } from 'react'
+import { Button } from './ui/Button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,26 +12,26 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './ui/DropdownMenu';
-import { toast } from './ui/toast';
+} from './ui/DropdownMenu'
+import { toast } from '@/components/ui/toast'
 
 const MobileMenu = () => {
-  const { data: session } = useSession();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false);
+  const { data: session } = useSession()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   const signUserOut = async () => {
     try {
-      setIsLoading(true);
-      await signOut();
+      setIsLoading(true)
+      await signOut()
     } catch (error) {
       toast({
         title: 'Error signing out',
         message: 'Please try again later.',
         type: 'error',
-      });
+      })
     }
-  };
+  }
 
   return (
     <nav className='md:hidden fixed z-50 bottom-20 right-0 left-0 flex justify-center'>
@@ -48,16 +48,14 @@ const MobileMenu = () => {
                 {session ? (
                   <Link
                     href='/dashboard'
-                    className='w-full flex items-center gap-1.5'
-                  >
+                    className='w-full flex items-center gap-1.5'>
                     <LayoutDashboard className='mr-2 h-5 w-5' />
                     <span>Dashboard</span>
                   </Link>
                 ) : (
                   <Link
                     href='/login'
-                    className='flex w-full items-center gap-1.5'
-                  >
+                    className='flex w-full items-center gap-1.5'>
                     <LayoutDashboard className='mr-2 h-5 w-5' />
                     <span>Sign in</span>
                   </Link>
@@ -67,8 +65,7 @@ const MobileMenu = () => {
               <DropdownMenuItem asChild>
                 <Link
                   href='/documentation'
-                  className='w-full flex items-center gap-1.5'
-                >
+                  className='w-full flex items-center gap-1.5'>
                   <Info className='mr-2 h-5 w-5' />
                   <span>Docs</span>
                 </Link>
@@ -86,7 +83,7 @@ const MobileMenu = () => {
         </DropdownMenu>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default MobileMenu;
+export default MobileMenu

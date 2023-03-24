@@ -3,7 +3,7 @@
 import { FC, useState } from 'react';
 import { Button } from '@/ui/Button';
 import { signOut } from 'next-auth/react';
-import { toast } from './ui/Toasts';
+import { toast } from './ui/toast';
 
 interface SignOutButtonProps {}
 
